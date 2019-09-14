@@ -20,6 +20,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
 app.use(bodyParser.urlencoded({extended: true}));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -32,26 +33,37 @@ var questionSchema = new mongoose.Schema({
 var Question = mongoose.model("Question",questionSchema);
 
 app.get('/',function(req,res){
-    res.render('register');
+    res.render('index');
 });
 
 app.get('/register',function(req,res){
-    res.render("login");
+    res.render("register");
 });
 
 app.post('/register',function(req,res){
-    User.register(new User({username: req.body.username}),req.body.password,function(err,user){
+    console.log(req.body.name);
+    console.log(req.body.email);
+    console.log(req.body.username);
+    console.log(req.body.college);
+    User.register(new User({name: req.body.name, email: req.body.email, username: req.body.username, college: req.body.college}),req.body.password,function(err,user){
         if(err){
-            return res.render('login');
+            return res.render('register');
         }
         passport.authenticate("local")(req,res,function(){
-            res.redirect("/hunt");
+            res.redirect("/login");
         });
     });
 });
 
-app.get('/hunt',function(req,res){
-    res.render('hunt');
+app.get('/login',function(req,res){
+    res.render('login');
+});
+
+app.post('/login',passport.authenticate("local"),{
+    successRedirect: "/home",
+    failureRedirect: "/login"
+},function(req,res){
+    res.render('login');
 });
 
 app.listen(8080,function(){
