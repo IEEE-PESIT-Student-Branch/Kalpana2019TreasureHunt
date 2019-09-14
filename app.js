@@ -45,8 +45,11 @@ app.post('/register',function(req,res){
     console.log(req.body.email);
     console.log(req.body.username);
     console.log(req.body.college);
-    User.register(new User({name: req.body.name, email: req.body.email, username: req.body.username, college: req.body.college}),req.body.password,function(err,user){
+    // name: req.body.name, 
+    // , username: req.body.username, college: req.body.college
+    User.register(new User({email: req.body.email}),req.body.password,function(err,user){
         if(err){
+            console.log("Error: "+err);
             return res.render('register');
         }
         passport.authenticate("local")(req,res,function(){
@@ -59,12 +62,34 @@ app.get('/login',function(req,res){
     res.render('login');
 });
 
-app.post('/login',passport.authenticate("local"),{
+// (err, user, info) => {
+//     console.log('ERR: ', err); // returns null
+//     console.log('USER: ', user); // returns false
+//     console.log('INFO: ', info);}
+
+app.post('/login',passport.authenticate("local",passport.authenticate('local',{
     successRedirect: "/home",
     failureRedirect: "/login"
-},function(req,res){
-    res.render('login');
+}),),function(req,res){
+    console.log("POSTED");
+    res.redirect('/login');
 });
+
+app.get('/home',isLoggedIn,function(req,res){
+    res.render("home");    
+});
+
+app.get('/logout',function(req,res){
+    req.logout();
+    res.redirect('/');
+});
+
+function isLoggedIn(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('login');
+}
 
 app.listen(8080,function(){
     console.log("Server has Started!");
