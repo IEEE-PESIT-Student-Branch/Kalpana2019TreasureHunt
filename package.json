@@ -1,0 +1,29 @@
+{
+  "name": "kalpana2019treasurehunt",
+  "version": "1.0.0",
+  "description": "The Trasure Hunt website for Kalpana 2019",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IEEEPESITSouthCampus/Kalpana2019TreasureHunt.git"
+  },
+  "author": "IEEE PESIT South",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IEEEPESITSouthCampus/Kalpana2019TreasureHunt/issues"
+  },
+  "homepage": "https://github.com/IEEEPESITSouthCampus/Kalpana2019TreasureHunt#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.7.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  }
+}

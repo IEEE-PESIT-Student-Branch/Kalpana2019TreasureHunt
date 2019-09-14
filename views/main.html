@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/materialize.min.css">
+    <style>
+    body{
+       
+       
+        background: url('/assets/astronomy-1867616_1280.jpg') no-repeat 50%50%;
+        background-size:cover;
+    }
+    #t{
+        opacity: 0.7;
+        text-align: center;
+    }
+    #an{
+        opacity: 0.7;
+        background-color: black;
+        margin:10px ;
+      padding:10px 20px;;
+      border-radius: 13px;
+    }
+    #an:hover{
+        opacity: 0.85;
+    }
+    .activet{
+        background-color:grey;
+    }
+    input {
+             color: white;
+            }
+    footer{
+        height:80px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container center">
+            <img class="responsive-img"src="./assets/Kalpana.png" alt="Kalpana"> 
+            <nav class="nav-wrapper black " id="t">
+                    <div class="nav-content">
+                        
+                                <a class="sidenav-trigger brand-logo  hide-on-large-only" href="#!" data-target="mobile-links"><i class="material-icons right">menu</i></a>
+                            <ul id="" class="center hide-on-med-and-down ">
+                                        
+                                <li class="activet"><a href="/main"><i class=" material-icons left">home</i>Home</a></li>
+                                    <li ><a href="/leader"><i class="material-icons left">stars</i>Ranking</a></li>
+                                    <li><a href="/about"><i class="material-icons left">chat</i>About</a></li>
+                                    
+                                </ul>
+                                <ul id="" class="right hide-on-med-and-down ">
+                                        <li ><a target="_blank" href="https://www.facebook.com/ieeepesitbsc"><i class="material-icons left">public</i>Fb Page</a></li>
+                                        
+                                        <li><a href="/logout"><i class="material-icons left">arrow_back</i>Logout</a></li>
+                                    </ul>
+                                    
+                                    
+                    </div>
+            
+                </nav>
+                <ul id="mobile-links" class="sidenav center hide-on-large-only">
+                                        
+                        <li class="activet"><a href="/main"><i class="material-icons left">home</i>Home</a></li>
+                            <li ><a href="/leader"><i class="material-icons left">stars</i>Ranking</a></li>
+                            <li><a href="/about"><i class="material-icons left">chat</i>About</a></li>
+                            <li ><a target="_blank" href="https://www.facebook.com/ieeepesitbsc"><i class="material-icons left">public</i>Fb Page</a></li>
+                            <li><a href="/logout"><i class="material-icons left">arrow_back</i>Logout</a></li>
+                        </ul>
+
+    <div id="rules" >
+        <br>
+        <button class="btn-small waves-effect waves-green">Level 1</button>
+        <div class=""" id="an">
+        <p class="white-text"> Treasure hunt has Ended ! thanks for participating.</p>
+        <p class="white-text"> Come to our <a target="_blank" href="https://www.facebook.com/ieeepesitbsc">Facebook page</a> for hints and answers. </p>
+    </div>
+    </div>
+
+    <div class="image s12 m12" >
+        <img  class="responsive-img" src="/assets/2.jpg" alt="noimage">
+    </div>
+    <div class="l4 s12 " >
+    <div class="form-group l4">
+            <form action="/main" class="white-text"method="POST">
+        
+            <div class="input-field l4" id="an">
+                
+                <input disabled class="disabled"type="text" name="ans" id="answer" placeholder="Answer">
+                
+        </div>
+        <button class="btn-large waves-effect light-green">Submit</button>
+    </form>
+    </div>  
+</div>  
+    
+
+
+
+</div>
+<br><br><br><br>
+<div class="container ">
+        <footer class="page-footer "id="an">
+                
+                  <div class="row center">
+                    <div class="col  s12">
+                      <h6 class="white-text">Developed By-</h6>
+                      <p class="grey-text text-lighten-4"> <a  target="_blank"href="http://www.github.com/jdmallige">Jagdish</a></p>
+                    </div>
+                    
+                  </div>
+                </footer>
+            </div>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+   $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
+    </script>
+<script src="/assets/materialize.min.js"></script>
+
+</html>

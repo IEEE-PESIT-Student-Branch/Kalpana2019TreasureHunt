@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+            body{
+               
+               
+                background: url('/assets/astronomy-1867616_1280.jpg') no-repeat 50%50%;
+                background-size: cover;
+            }
+            .form{
+                background-color: black;
+                opacity: 0.65; 
+                margin:20px auto;
+                padding:25px;
+                border-radius: 17px;
+            }
+            .form:hover{
+                opacity:0.85;
+                transition-duration: .5s;
+            }
+            input {
+             color: white;
+            }
+
+    </style>
+    <link rel="stylesheet" href="/assets/materialize.min.css">
+</head>
+<body>
+        <div class="container center">
+            <img class="responsive-img"src="./assets/Kalpana.png" alt="Kalpana">
+                <div class=" container center">
+                    
+                    <form class="center-align white-text"action="/register" method="POST">
+                            <h4>Register</h4>
+                            <div class="form white-text col s12">
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <i class="material-icons prefix">account_circle</i>
+                                        <input id="name" name="name" maxlength="20"type="text" class="validate" required>
+                                      <label for="name">Name</label>
+                                    </div>
+                                  </div>
+                            
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                        <input id="email" name="email" type="email" class="validate" required>
+                                      <label for="email">Email</label>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                        <div class="input-field col s12">
+                                                <i class="material-icons prefix">sentiment_very_satisfied</i>
+                                            <input id="username" name="username" required data-length="10" type="text" maxlength="12" class="validate">
+                                          <label for="username">Username</label>
+                                        </div>
+                                      </div>
+                        <div class="row">
+                                    <div class="input-field col s6">
+                                            <i class="material-icons prefix">security</i>
+                                        <input id="password" type="password" name="password"class="validate" required>
+                                      <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                                <i id="pass2"class="material-icons prefix">error</i>
+                                            <input id="password2" name="password2" required type="password" class="validate ">
+                                          <label for="password2">Re-type</label>
+                                        </div>
+                                      </div> 
+                                      <div class="row">
+                                            <div class="input-field col s12">
+                                                    <i class="material-icons prefix">school</i>
+                                                <input id="college" data-length="10" required name="college" type="text" maxlength="9" class="validate">
+                                              <label for="college">College</label>
+                                            </div>
+                                          </div>
+                                        </div>
+                     <button class="btn waves-effect waves-light indigo" type="submit" onclick="" name="action">Submit
+                      <i class="material-icons right">send</i>
+                     </button>
+    
+                    </form>
+                </div>
+                          
+                          
+    </div>
+
+</body>
+<script src="/assets/materialize.min.js"></script>
+<script>
+var x=document.getElementById('password2');
+x.addEventListener('keyup',function(){
+  console.log(x.value);
+  if(document.getElementById('password').value==x.value)
+
+  {document.getElementById('pass2').innerHTML="beenhere";
+  document.getElementById('pass2').classList.add("green-text");}
+  else{
+    document.getElementById('pass2').innerHTML="error";
+    document.getElementById('pass2').classList.add("red-text");
+  }
+})
+
+
+</script>
+</html>
