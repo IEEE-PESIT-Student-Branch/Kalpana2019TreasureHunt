@@ -44,7 +44,7 @@ app.post('/register',function(req,res){
     console.log(req.body.college);
     // name: req.body.name, 
     // , username: req.body.username, college: req.body.college
-    User.register(new User({email: req.body.email}),req.body.password,function(err,user){
+    User.register(new User({name: req.body.name, username: req.body.username, college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
         if(err){
             console.log("Error: "+err);
             return res.render('register');
@@ -59,19 +59,17 @@ app.get('/login',function(req,res){
     res.render('login');
 });
 
+(err, user, info) => {
+    console.log('ERR: ', err); // returns null
+    console.log('USER: ', user); // returns false
+    console.log('INFO: ', info);}
 
-
-// (err, user, info) => {
-//     console.log('ERR: ', err); // returns null
-//     console.log('USER: ', user); // returns false
-//     console.log('INFO: ', info);}
-
-app.post('/login',passport.authenticate("local",passport.authenticate('local',{
+app.post('/login',passport.authenticate('local',{
     successRedirect: "/home",
     failureRedirect: "/login"
-}),),function(req,res){
+}),function(req,res){
     console.log("POSTED");
-    res.redirect('/login');
+    // res.redirect('/login');
     //answer();
     //let result = new Result({
     //    username: req.body.name,
@@ -80,7 +78,7 @@ app.post('/login',passport.authenticate("local",passport.authenticate('local',{
 });
 
 app.get('/home',isLoggedIn,function(req,res){
-    res.render("home");    
+    res.render("main");    
 });
 
 app.get('/logout',function(req,res){
