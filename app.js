@@ -7,6 +7,8 @@ var LocalStrategy =  require('passport-local');
 var passportLocalMongoose =  require('passport-local-mongoose');
 
 var User = require('./models/user');
+var Result = require('./models/result');
+var Question = require('./models/question');
 
 mongoose.connect("mongodb://localhost/surfit");
 app.use(express.static("css"));
@@ -25,12 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-var questionSchema = new mongoose.Schema({
-    image: String,
-    question: String,
-    answer: String
-});
-var Question = mongoose.model("Question",questionSchema);
+
 
 app.get('/',function(req,res){
     res.render('index');
@@ -62,6 +59,8 @@ app.get('/login',function(req,res){
     res.render('login');
 });
 
+
+
 // (err, user, info) => {
 //     console.log('ERR: ', err); // returns null
 //     console.log('USER: ', user); // returns false
@@ -73,6 +72,11 @@ app.post('/login',passport.authenticate("local",passport.authenticate('local',{
 }),),function(req,res){
     console.log("POSTED");
     res.redirect('/login');
+    //answer();
+    //let result = new Result({
+    //    username: req.body.name,
+    //    score: 0  
+    //})
 });
 
 app.get('/home',isLoggedIn,function(req,res){
@@ -84,6 +88,33 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 
+app.get('/takequiz',(req,res)=>{
+    //res.render(yet to be done,{
+    //    title:
+    //});
+})
+
+
+app.post('/takequiz'/* /:id */,(req,res)=>{
+    answer(req,res);
+    if(err){
+        console.log(err);
+    }    
+    else{
+        res.render('/takequiz'/*:id*/);
+    }
+})
+
+function answer(req,res){
+    if(req.body==Question.find({qno:_id}).answer){
+        Result.update({username:''}, {$inc: {score:1}}); //incomplete here
+        res.redirect('/takequiz'/* :id */);
+    }    
+    else{
+        res.redirect('/takequiz'/* :id */);
+    }
+}
+
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
         return next();
@@ -94,3 +125,4 @@ function isLoggedIn(req,res,next){
 app.listen(8080,function(){
     console.log("Server has Started!");
 });
+
