@@ -89,15 +89,22 @@
     </div> -->
     <div class="l4 s12 " >
     <div class="form-group l4">
-            <form action="/main" class="white-text"method="POST">
-        
+            <form action="/home" class="white-text"method="POST">
+                <% if(question.qno>0 && question.qno<3){ %>
             <div class="input-field l4" id="an">
                 
-                <input type="text" name="ans" id="answer" placeholder="Answer">
+                <input type="text" name="answer" id="answer" placeholder="Answer">
                 
         </div>
+        <% }%>
+        <% if(question.qno>0){ %>
+            <% if(question.qno<3){ %>
         <button class="btn-large waves-effect light-green">Submit</button>
-        <!-- <button class="btn-large waves-effect light-green">Submit</button> -->
+        <% } else { %>
+            <% } %>
+        <% } else { %>
+        <button class="btn-large waves-effect light-green" style="margin: 10%">Start Quiz!</button>
+        <% } %>
     </form>
     </div>  
 </div>  

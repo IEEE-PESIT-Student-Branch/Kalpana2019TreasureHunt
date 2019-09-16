@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ranking</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/materialize.min.css">
+    <link rel="stylesheet" href="materialize.min.css">
     <style>
     body{
        
        
-        background: url('/assets/astronomy-1867616_1280.jpg') no-repeat 50%50%;
+        background: url('space.jpg') no-repeat 50%50%;
         background-size: cover;
     }
     #t{
@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="container center">
-       <img class="responsive-img"src="./assets/Kalpana.png" alt="Kalpana">     
+       <img class="responsive-img"src="Kalpana.png" alt="Kalpana">     
 
        <nav class="nav-wrapper black " id="t">
             <div class="nav-content">
@@ -95,8 +95,25 @@
                     </thead>
             
                     <tbody>
-                        
-                            <tr>
+<% var i=1; %>
+                      <% ppl.forEach(function(user){ %>
+                        <tr>
+                            <td ><%= i++ %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.college %></td>
+                            <td><%= user.qno %></td>
+                            <% var sec = user.start.getSeconds(); %>
+                            <% if(sec<10){ %>
+                            <% sec = "0"+sec; %>
+                            <% } %>
+                            <% var min = user.start.getMinutes(); %>
+                            <% if(min<10){ %>
+                            <% min = "0"+min; %>
+                            <% } %>
+                            <td><%= ""+user.start.getHours()+":"+min+":"+sec %></td>
+                          </tr>
+                      <% }); %>
+                            <!-- <tr>
                                     <td >1</td>
                                     <td>bwayne</td>
                                     <td>PESIT</td>
@@ -334,7 +351,7 @@
                                     <td>PESIT </td>
                                     <td>14</td>
                                     <td>18:30:36</td>
-                                  </tr>
+                                  </tr> -->
                                   
                                   
                                       
@@ -367,6 +384,6 @@
   });
         
     </script>
-<script src="/assets/materialize.min.js"></script>
+<script src="materialize.min.js"></script>
 
     </html>

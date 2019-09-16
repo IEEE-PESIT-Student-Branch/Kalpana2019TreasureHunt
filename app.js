@@ -29,8 +29,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // Question.create(
 //     {
-//         qno: 0,
-//         image: '',
+//         qno: 3,
+//         image: 'thank.jpg',
 //         answer: ''
 //     },function(err,question){
 //         if(err){
@@ -62,7 +62,7 @@ app.post('/register',function(req,res){
     console.log(req.body.college);
     // name: req.body.name, 
     // , username: req.body.username, college: req.body.college
-    User.register(new User({name: req.body.name, username: req.body.username, qno: 0, college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
+    User.register(new User({name: req.body.name, username: req.body.username, qno: 0,start: new Date(), end: new Date(0,0,0,0,0,0,0), college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
         if(err){
             console.log("Error: "+err);
             return res.render('register');
@@ -96,16 +96,71 @@ app.post('/login',passport.authenticate('local',{
 });
 
 app.get('/home',isLoggedIn,function(req,res){
-    Question.find({qno: req.user.qno+1},function(err,question){
+    Question.find({qno: req.user.qno},function(err,question){
         if(err){
             console.log(err);
         }
         else{
-            console.log(req.user.qno);
             res.render("main",{question: question[0]})
         }
     });
     // res.render("main");    
+});
+
+app.post('/home',function(req,res){
+    var given = req.body.answer;
+    if(req.user.qno==0){
+        User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),start: new Date()},function(err,updatedUser){
+            console.log("Zeroth Question");
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log(updatedUser);
+                res.redirect('/home');
+            }
+        });
+    }
+    else{
+    Question.find({qno: req.user.qno},function(err,rquestion){
+        if(err){
+            console.log(err);
+        }
+        else{
+            // console.log(rquestion[0].answer == given.toLowerCase());
+            if(rquestion[0].answer == given.toLowerCase()){
+                console.log(req.user.qno);
+                if(req.user.qno<2){
+                // User.updateOne({_id: req.user._id},{qno: req.user.qno+1});
+                    User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1)},function(err,updatedUser){
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            // console.log(updatedUser.qno);
+                        }
+                        res.redirect('/home');
+                    });
+                }
+                else{
+                    console.log("Done!");
+                    User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1), end: new Date()},function(err,updatedUser){
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            // console.log(updatedUser.qno);
+                        }
+                        res.redirect('/home');
+                    });
+                }
+            }
+            else {
+                res.redirect('/home');
+            }
+        }
+    });
+}
 });
 
 app.get('/logout',function(req,res){
@@ -113,32 +168,73 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 
-app.get('/takequiz',(req,res)=>{
-    //res.render(yet to be done,{
-    //    title:
-    //});
-})
+// app.get('/takequiz',(req,res)=>{
+//     //res.render(yet to be done,{
+//     //    title:
+//     //});
+// })
 
 
-app.post('/takequiz'/* /:id */,(req,res)=>{
-    answer(req,res);
-    if(err){
-        console.log(err);
-    }    
-    else{
-        res.render('/takequiz'/*:id*/);
-    }
-})
+// app.post('/takequiz'/* /:id */,(req,res)=>{
+//     answer(req,res);
+//     if(err){
+//         console.log(err);
+//     }    
+//     else{
+//         res.render('/takequiz'/*:id*/);
+//     }
+// })
 
-function answer(req,res){
-    if(req.body==Question.find({qno:_id}).answer){
-        Result.update({username:''}, {$inc: {score:1}}); //incomplete here
-        res.redirect('/takequiz'/* :id */);
-    }    
-    else{
-        res.redirect('/takequiz'/* :id */);
-    }
-}
+// function answer(req,res){
+//     if(req.body==Question.find({qno:_id}).answer){
+//         Result.update({username:''}, {$inc: {score:1}}); //incomplete here
+//         res.redirect('/takequiz'/* :id */);
+//     }    
+//     else{
+//         res.redirect('/takequiz'/* :id */);
+//     }
+// }
+
+app.get('/leader',function(req,res){
+    User.find({},function(err,all){
+        if(err){
+            console.log(err);
+        }
+        else{
+            var i,j;
+            for (i = 0; i < all.length-1; i++) {
+                for (j=0; j < all.length-i-1 ;j++){
+                    if(all[j].qno<all[j+1].qno){
+                        var temp = all[j];
+                        all[j]=all[j+1];
+                        all[j+1]=temp;
+                    }
+                    else if(all[j].qno==all[j+1].qno){
+                        var start1,end1,start2,end2;
+                        start1 = all[j].start;
+                        start2 = all[j+1].start;
+                        end1 = all[j].end;
+                        end2 = all[j+1].end;
+                        if((end1-start1)>(end2-start2)){
+                        var temp = all[j];
+                        all[j]=all[j+1];
+                        all[j+1]=temp;
+                        }
+                        else if ((end1-start1)==(end2-start2)) {
+                            if(start1>start2){
+                                var temp = all[j];
+                                all[j]=all[j+1];
+                                all[j+1]=temp;
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(all[0].qno);
+            res.render("leader",{ppl: all});
+        }
+    });
+});
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){

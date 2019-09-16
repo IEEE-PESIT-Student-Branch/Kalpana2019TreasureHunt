@@ -7,7 +7,9 @@ var userSchema = new mongoose.Schema({
     email: String,
     name: String,
     college: String,
-    qno: Number
+    qno: Number,
+    start: Date,
+    end: Date
 });
 
 userSchema.plugin(passportLocalMongoose);
