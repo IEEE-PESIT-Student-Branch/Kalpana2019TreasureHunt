@@ -27,10 +27,28 @@ app.use(bodyParser.urlencoded({extended: true}));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+// Question.create(
+//     {
+//         qno: 0,
+//         image: '',
+//         answer: ''
+//     },function(err,question){
+//         if(err){
+//             console.log('err');
+//         }
+//         else{
+//             console.log('Question is: '+question);
+//         }
+//     }
+// )
 
 app.get('/',function(req,res){
-    res.render('index');
+    if(req.isAuthenticated()){
+        res.redirect('/home');
+    }
+    else{
+        res.render('index');
+    }
 });
 
 app.get('/register',function(req,res){
@@ -44,7 +62,7 @@ app.post('/register',function(req,res){
     console.log(req.body.college);
     // name: req.body.name, 
     // , username: req.body.username, college: req.body.college
-    User.register(new User({name: req.body.name, username: req.body.username, college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
+    User.register(new User({name: req.body.name, username: req.body.username, qno: 0, college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
         if(err){
             console.log("Error: "+err);
             return res.render('register');
@@ -59,10 +77,10 @@ app.get('/login',function(req,res){
     res.render('login');
 });
 
-(err, user, info) => {
-    console.log('ERR: ', err); // returns null
-    console.log('USER: ', user); // returns false
-    console.log('INFO: ', info);}
+// (err, user, info) => {
+//     console.log('ERR: ', err); // returns null
+//     console.log('USER: ', user); // returns false
+//     console.log('INFO: ', info);}
 
 app.post('/login',passport.authenticate('local',{
     successRedirect: "/home",
@@ -78,7 +96,16 @@ app.post('/login',passport.authenticate('local',{
 });
 
 app.get('/home',isLoggedIn,function(req,res){
-    res.render("main");    
+    Question.find({qno: req.user.qno+1},function(err,question){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(req.user.qno);
+            res.render("main",{question: question[0]})
+        }
+    });
+    // res.render("main");    
 });
 
 app.get('/logout',function(req,res){

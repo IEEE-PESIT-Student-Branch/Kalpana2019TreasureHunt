@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 var questionSchema = new mongoose.Schema({
     qno: Number,
     image: String,
-    question: String,
+    // question: String,
     answer: String
 });
 
