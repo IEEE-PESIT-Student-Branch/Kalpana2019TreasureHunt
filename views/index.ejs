@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TreasureHunt</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="materialize.min.css">
     <style>
     body{
        
        
-        background: url('space.jpg') no-repeat 50%50%;
+        background: url('bg3.jpg') no-repeat 50%50%;
         background-size: cover;
     }
     #t{
@@ -28,8 +28,11 @@
       height:220px;
     }
     a{
-        margin:25% auto;
-        width:60%;
+        margin:0% auto;
+        width:30%;
+    }
+    a.btn {
+        /* background-color: blueviolet; */
     }
     #an:hover{
         opacity: 0.85;
@@ -49,40 +52,52 @@
         font-size:25px;
         transition-duration: 0.6s;
     }
+    p{
+        color:white;
+        font-family: 'Anton', sans-serif;
+        font-size: 36px;
+       
+
+    }
     </style>
 </head>
 <body>
+       
+</br>
+</br>
+</br>
     <div class=" white-text container center">
-            <img class="responsive-img"src="Kalpana.png" alt="Kalpana"> 
-            <h3>In progress</h3>
+            <img class="responsive-img"src="logo3.png" height="15%" width="15%" alt="Kalpana"> 
+            
            </div>
+           <div class=" white-text container center">
+                <img class="responsive-img"src="Kalpana.png" alt="Kalpana"> 
+                
+               </div>
            
            <div class="container center">
                <div class="row an">
                    
+                   <p  > WELCOME TO THE TREASURE HUNT!</p>
+               </div>
+               <div class="row">
+                   
+                   <a class="btn btn-primary indigo" href="/register" role="button">REGISTER</a>
                    
                </div>
-           </div>
-           <div class="container center">
                <div class="row">
-                <div class="col s12 l5" id="an">
-                    <a href="/register" class="waves-effect btn-large orange waves-block">Register</a>
-                </div>
-                <div class="col s12 l5 right" id="an">
-                        <a href="/login" class="waves-effect btn-large orange waves-block center">Login</a>
-                    </div>
-    
-
-               </div> 
-               
+                    <a class="btn btn-primary indigo" href="/login">LOGIN</a>
+               </div>
+           </div>
+           
                </div>   
-   
 
+      
     
    
    
 
-<p class="center">Developed By- <a  style="color:black"href="https://github.com/jdmallige">Jagdish</a></p>
+
 </body>
 
 <script src="materialize.min.js"></script>

@@ -195,7 +195,7 @@ app.get('/logout',function(req,res){
 //     }
 // }
 
-app.get('/leader',function(req,res){
+app.get('/leader',isLoggedIn,function(req,res){
     User.find({},function(err,all){
         if(err){
             console.log(err);
@@ -234,6 +234,10 @@ app.get('/leader',function(req,res){
             res.render("leader",{ppl: all});
         }
     });
+});
+
+app.get('/about',isLoggedIn,function(req,res){
+    res.render("about");
 });
 
 function isLoggedIn(req,res,next){
