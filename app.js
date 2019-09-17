@@ -101,7 +101,7 @@ app.get('/home',isLoggedIn,function(req,res){
             console.log(err);
         }
         else{
-            res.render("main",{question: question[0]})
+            res.render("main",{question: question[0]});
         }
     });
     // res.render("main");    
