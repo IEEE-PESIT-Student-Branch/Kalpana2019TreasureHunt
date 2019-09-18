@@ -131,7 +131,7 @@ app.post('/home',function(req,res){
             // console.log(rquestion[0].answer == given.toLowerCase());
             if(rquestion[0].answer == given.toLowerCase()){
                 console.log(req.user.qno);
-                if(req.user.qno<11){
+                if(req.user.qno<12){
                 // User.updateOne({_id: req.user._id},{qno: req.user.qno+1});
                     User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1)},function(err,updatedUser){
                         if(err){
