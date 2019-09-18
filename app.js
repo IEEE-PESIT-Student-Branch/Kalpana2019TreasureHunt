@@ -247,7 +247,10 @@ function isLoggedIn(req,res,next){
     res.redirect('login');
 }
 
-app.listen(8080,function(){
+// app.listen(8080,function(){
+//     console.log("Server has Started!");
+// });
+
+app.listen(process.env.PORT,process.env.IP,function(){
     console.log("Server has Started!");
 });
-
