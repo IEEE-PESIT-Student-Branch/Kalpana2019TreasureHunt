@@ -11,7 +11,7 @@ var Result = require('./models/result');
 var Question = require('./models/question');
 
 // mongoose.connect("mongodb://localhost/surfit");
-mongoose.connect("mongodb+srv://ieeekalpana2019:Kalpana2019$$$@surfit-vppqs.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb://ujzzkkcofxbbnm7v2g7h:AZctNdYmyxcKbRaJ28BM@bpsupq4wqahgisw-mongodb.services.clever-cloud.com:27017/bpsupq4wqahgisw");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
