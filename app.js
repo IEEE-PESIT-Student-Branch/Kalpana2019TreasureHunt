@@ -10,7 +10,8 @@ var User = require('./models/user');
 var Result = require('./models/result');
 var Question = require('./models/question');
 
-mongoose.connect("mongodb://localhost/surfit");
+// mongoose.connect("mongodb://localhost/surfit");
+mongoose.connect("mongodb+srv://ieeekalpana2019:Kalpana2019$$$@surfit-vppqs.mongodb.net/test?retryWrites=true&w=majority");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
