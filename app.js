@@ -138,7 +138,6 @@ app.post('/home',function(req,res){
                             console.log(err);
                         }
                         else{
-                            // console.log(updatedUser.qno);
                         }
                         res.redirect('/home');
                     });
