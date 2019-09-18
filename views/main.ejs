@@ -41,6 +41,7 @@
 </head>
 <body>
     <div class="container center">
+            <img class="responsive-img"src="logo3.png" id="logo"> </br>
             <img class="responsive-img"src="Kalpana.png" alt="Kalpana"> 
             <nav class="nav-wrapper black " id="t">
                     <div class="nav-content">
@@ -90,7 +91,7 @@
     <div class="l4 s12 " >
     <div class="form-group l4">
             <form action="/home" class="white-text"method="POST">
-                <% if(question.qno>0 && question.qno<3){ %>
+                <% if(question.qno>0 && question.qno<12){ %>
             <div class="input-field l4" id="an">
                 
                 <input type="text" name="answer" id="answer" placeholder="Answer">
@@ -98,7 +99,7 @@
         </div>
         <% }%>
         <% if(question.qno>0){ %>
-            <% if(question.qno<3){ %>
+            <% if(question.qno<12){ %>
         <button class="btn-large waves-effect light-green">Submit</button>
         <% } else { %>
             <% } %>
