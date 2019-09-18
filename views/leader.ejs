@@ -1,0 +1,402 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ranking</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <style>
+    body{
+       
+       
+        background: url('./assets/bghome.jpg') no-repeat 50%50%;
+        background-size: cover;
+    }
+    #t{
+        opacity: 0.8;
+        text-align: center;
+    }
+    #logo{
+    height:150px;
+    width: 150px;
+    display: block;
+    border:15px;
+    margin: 0 auto;
+    border-radius: 200px;}
+    #an{
+       opacity: 0.7;
+       background-color: rgb(0, 0, 0);
+       margin:10px ;
+      padding:0px 20px;;
+      border-radius: 13px;
+    }
+    .activet{
+        background-color:rgb(45, 22, 129);
+    }
+    #an:hover{
+        opacity: 0.85;
+    }
+    .table{
+        background-color: rgb(45, 22, 129);
+        opacity: .7;
+        margin:0 auto;
+        padding:0;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 75px;
+        font-weight: 300;
+        color: white;
+    }
+
+    .table:hover{
+        opacity:.85;
+    }
+    footer{
+        height:65px;
+    }
+   
+    </style>
+</head>
+<body>
+    <div class="container center">     
+       <img class="responsive-img"src="./assets/logo_ver1.png" id="logo">  
+       <img class="responsive-img"src="./assets/Kalpana.png" alt="Kalpana">
+       <nav class="nav-wrapper black " id="t">
+            <div class="nav-content">
+                
+                        <a class="sidenav-trigger brand-logo  hide-on-large-only" href="#!" data-target="mobile-links"><i class="material-icons right">menu</i></a>
+                    <ul id="" class="center hide-on-med-and-down ">
+                                
+                        <li><a href="/main"><i class="material-icons left">home</i>Home</a></li>
+                            <li class="activet"><a href="/leader"><i class="material-icons left">stars</i>Ranking</a></li>
+                            <li><a href="/about"><i class="material-icons left">chat</i>About</a></li>
+                            
+                        </ul>
+                        <ul id="" class="right hide-on-med-and-down ">
+                                <li ><a target="_blank" href="https://www.facebook.com/ieeepesitbsc"><i class="material-icons left">public</i>Fb Page</a></li>
+                                
+                                <li><a href="/logout"><i class="material-icons left">arrow_back</i>Logout</a></li>
+                            </ul>
+                            
+                            
+            </div>
+    
+        </nav>
+        <ul id="mobile-links" class="sidenav center hide-on-large-only">
+                                
+                <li><a href="/main"><i class="material-icons left">home</i>Home</a></li>
+                    <li class="activet"><a href="/leader"><i class="material-icons left">grade</i>Ranking</a></li>
+                    <li><a href="/about"><i class="material-icons left">sort</i>About</a></li>
+                    <li ><a target="_blank" href="https://www.facebook.com/ieeepesitbsc"><i class="material-icons left">person-add</i>Fb Page</a></li>
+                    <li><a href="/logout"><i class="material-icons left">account</i>Logout</a></li>
+                </ul>
+    
+        <div class="row">
+            <br>
+        <div class="table col l12 ">
+            <table style="width:100%"class=" highlight white-text bordered">
+                    <thead class="">
+                      <tr>
+                          <th>Rank</th>
+                          <th>Participant</th>
+                          <th>College</th>
+                          <th>Level</th>
+                          <th>Time</th>
+
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+<!-- <% var i=1 %>
+                      <% ppl.forEach(function(user){ %>
+                        <tr>
+                            <td><%= i++ %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.college %></td>
+                            <td><%= user.qno %></td>
+                            <% var sec = user.start.getSeconds(); %>
+                            <% if(sec<10) { %>
+                              <% sec = "0"+sec; %>
+                            <% } %>
+                            <% var min = user.start.getMinutes(); %>
+                            <% if(min<10) { %>
+                             <% min = "0"+min; %>
+                            <% } %>
+                            <td><%= ""+user.start.getHours()+":"+min+":"+sec %></td>
+                          </tr>
+                      <% }); %> -->
+                      <!--
+                            <tr>
+                                    <td >1</td>
+                                    <td>bwayne</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:19:58</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >2</td>
+                                    <td>snehil</td>
+                                    <td>Pesit BSC</td>
+                                    <td>14</td>
+                                    <td>18:21:42</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >3</td>
+                                    <td>Ayush7710</td>
+                                    <td>PESIT BSC</td>
+                                    <td>14</td>
+                                    <td>18:22:49</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >4</td>
+                                    <td>Blahblahblah</td>
+                                    <td>Pes</td>
+                                    <td>14</td>
+                                    <td>18:22:53</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >5</td>
+                                    <td>Srav56</td>
+                                    <td>PESIT-BSC</td>
+                                    <td>14</td>
+                                    <td>18:22:57</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >6</td>
+                                    <td>samsenthil</td>
+                                    <td>PESIT BSC</td>
+                                    <td>14</td>
+                                    <td>18:23:17</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >7</td>
+                                    <td>BPStacks</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:23:30</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >8</td>
+                                    <td>Mohammed</td>
+                                    <td>Pesu</td>
+                                    <td>14</td>
+                                    <td>18:24:16</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >9</td>
+                                    <td>mohibayub23</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:24:36</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >10</td>
+                                    <td>mayank98</td>
+                                    <td>Pesit </td>
+                                    <td>14</td>
+                                    <td>18:24:39</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >11</td>
+                                    <td>Shrishti</td>
+                                    <td>Pesit bsc</td>
+                                    <td>14</td>
+                                    <td>18:24:48</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >12</td>
+                                    <td>Intelli_jsb</td>
+                                    <td>PESit</td>
+                                    <td>14</td>
+                                    <td>18:24:51</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >13</td>
+                                    <td>Sanju</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:24:55</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >14</td>
+                                    <td>Rajath</td>
+                                    <td>PES</td>
+                                    <td>14</td>
+                                    <td>18:24:58</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >15</td>
+                                    <td>p0i$oN~fTw</td>
+                                    <td>PESUSouth</td>
+                                    <td>14</td>
+                                    <td>18:25:3</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >16</td>
+                                    <td>Vasista</td>
+                                    <td>PESIT-BSC</td>
+                                    <td>14</td>
+                                    <td>18:25:4</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >17</td>
+                                    <td>pranav2819</td>
+                                    <td>PESIT SOU</td>
+                                    <td>14</td>
+                                    <td>18:25:11</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >18</td>
+                                    <td>Izhan</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:25:21</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >19</td>
+                                    <td>Mistakenfoe</td>
+                                    <td>PESIT</td>
+                                    <td>14</td>
+                                    <td>18:25:37</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >20</td>
+                                    <td>n1khilmane</td>
+                                    <td>PESU </td>
+                                    <td>14</td>
+                                    <td>18:25:50</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >21</td>
+                                    <td>Akash6280</td>
+                                    <td>Pesit</td>
+                                    <td>14</td>
+                                    <td>18:28:0</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >22</td>
+                                    <td>Sayajin</td>
+                                    <td>PES INSTI</td>
+                                    <td>14</td>
+                                    <td>18:28:2</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >23</td>
+                                    <td>Abhi</td>
+                                    <td>PESU ELEC</td>
+                                    <td>14</td>
+                                    <td>18:28:3</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >24</td>
+                                    <td>Akib</td>
+                                    <td>PES South</td>
+                                    <td>14</td>
+                                    <td>18:28:55</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >25</td>
+                                    <td>nikhilmishra</td>
+                                    <td>PESIT SOU</td>
+                                    <td>14</td>
+                                    <td>18:29:1</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >26</td>
+                                    <td>Bot360</td>
+                                    <td>Pes</td>
+                                    <td>14</td>
+                                    <td>18:29:3</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >27</td>
+                                    <td>adi03</td>
+                                    <td>Pesit</td>
+                                    <td>14</td>
+                                    <td>18:29:12</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >28</td>
+                                    <td>Sushant76</td>
+                                    <td>Pesit BSC</td>
+                                    <td>14</td>
+                                    <td>18:29:12</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >29</td>
+                                    <td>Ap</td>
+                                    <td>Pesit-Bsc</td>
+                                    <td>14</td>
+                                    <td>18:29:26</td>
+                                  </tr>
+                                  
+                            <tr>
+                                    <td >30</td>
+                                    <td>Ananya08</td>
+                                    <td>PESIT </td>
+                                    <td>14</td>
+                                    <td>18:30:36</td>
+                                  </tr> 
+                                -->
+                                  
+                                      
+
+                    </tbody>
+                  </table>
+
+    
+</div>
+</div>
+    </div>
+    <br><br>
+    <div class="container ">
+    <footer class="page-footer " id="an">
+            
+              <div class="row center">
+                <div class="col  s12">
+                  <h6 class="white-text">Developed By-</h6>
+                  <p class="grey-text text-lighten-4"> <a  target="_blank"href="http://kalpana2019.netlify.com">IEEE Kalpana TechTeam</a></p>
+                </div>
+                
+              </div>
+            </footer>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+   $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+        
+    </script>
+<script src="./js/materialize.min.js"></script>
+
+    </html>
