@@ -48,9 +48,11 @@
         font-size: 50px;
         color: red;
     }
-    a:hover{
-        font-size:25px;
-        transition-duration: 0.6s;
+    .btn-primary.button1:hover{
+        /* font-size:25px; */
+        background-color: rgba(255, 255, 255, 0.3) !important;
+        /* color: black; */
+        /* transition-duration: 0.6s; */
     }
     p{
         color:white;
@@ -61,6 +63,14 @@
     }
     #smaller {
         font-size: 28px;
+    }
+
+    .btn-primary.button1 {
+        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: white;
+        font-weight: 500;
+        letter-spacing: 3px;
     }
     </style>
 </head>
@@ -82,16 +92,16 @@
                <div class="row an">
                    
                    <p> WELCOME TO THE TREASURE HUNT!</p>
-                   <p id="smaller">The hunt will begin at 19/09/2019 @ 6pm</p>
+                   <p id="smaller">The hunt will begin at 09/11/2020 @ 6pm</p>
                </div>
-               <!-- <div class="row">
+               <div class="row">
                    
-                   <a class="btn btn-primary indigo" href="/register" role="button">REGISTER</a>
+                   <a class="btn btn-primary indigo button1" href="/register" role="button">REGISTER</a>
                    
                </div>
                <div class="row">
-                    <a class="btn btn-primary indigo" href="/login">LOGIN</a>
-               </div> -->
+                    <a class="btn btn-primary indigo button1" href="/login">LOGIN</a>
+               </div>
            </div>
            
                </div>   

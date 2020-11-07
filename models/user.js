@@ -9,6 +9,7 @@ var userSchema = new mongoose.Schema({
     college: String,
     qno: Number,
     start: Date,
+    submit:Date,
     end: Date
 });
 

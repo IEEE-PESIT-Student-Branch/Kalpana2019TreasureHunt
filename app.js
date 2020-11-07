@@ -11,7 +11,7 @@ var Result = require('./models/result');
 var Question = require('./models/question');
 
 // mongoose.connect("mongodb://localhost/surfit");
-mongoose.connect("mongodb://ujzzkkcofxbbnm7v2g7h:AZctNdYmyxcKbRaJ28BM@bpsupq4wqahgisw-mongodb.services.clever-cloud.com:27017/bpsupq4wqahgisw");
+mongoose.connect("mongodb://ublqdyebujdh7p79vfhy:wPpmnYe6KeBCc3vvDFWy@bcy51qru6xqbpuv-mongodb.services.clever-cloud.com:27017/bcy51qru6xqbpuv");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
@@ -111,7 +111,7 @@ app.get('/home',isLoggedIn,function(req,res){
 app.post('/home',function(req,res){
     var given = req.body.answer;
     if(req.user.qno==0){
-        User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),start: new Date()},function(err,updatedUser){
+        User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),start: new Date(),submit: new Date()},function(err,updatedUser){
             console.log("Zeroth Question");
             if(err){
                 console.log(err);
@@ -133,7 +133,7 @@ app.post('/home',function(req,res){
                 console.log(req.user.qno);
                 if(req.user.qno<12){
                 // User.updateOne({_id: req.user._id},{qno: req.user.qno+1});
-                    User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1)},function(err,updatedUser){
+                    User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),submit:new Date()},function(err,updatedUser){
                         if(err){
                             console.log(err);
                         }
@@ -211,22 +211,26 @@ app.get('/leader',isLoggedIn,function(req,res){
                     }
                     else if(all[j].qno==all[j+1].qno){
                         var start1,end1,start2,end2;
-                        start1 = all[j].start;
-                        start2 = all[j+1].start;
-                        end1 = all[j].end;
-                        end2 = all[j+1].end;
-                        if((end1-start1)>(end2-start2)){
+                        start1 = all[j].submit;
+                        start2 = all[j+1].submit;
+                        // end1 = all[j].end;
+                        // end2 = all[j+1].end;
+                        if((start1)>(start2)){
                         var temp = all[j];
                         all[j]=all[j+1];
                         all[j+1]=temp;
                         }
-                        else if ((end1-start1)==(end2-start2)) {
-                            if(start1>start2){
-                                var temp = all[j];
-                                all[j]=all[j+1];
-                                all[j+1]=temp;
-                            }
-                        }
+                        // else{
+                        //     if(start1>start2){
+                        //         var temp = all[j];
+                        //         all[j]=all[j+1];
+                        //         all[j+1]=temp;
+                        //     }
+
+                        // }
+                        // else if ((end1-start1)==(end2-start2)) {
+
+                        // }
                     }
                 }
             }
@@ -247,10 +251,10 @@ function isLoggedIn(req,res,next){
     res.redirect('login');
 }
 
-// app.listen(8080,function(){
-//     console.log("Server has Started!");
-// });
-
-app.listen(process.env.PORT,process.env.IP,function(){
+app.listen(8080,function(){
     console.log("Server has Started!");
 });
+
+// app.listen(process.env.PORT,process.env.IP,function(){
+//     console.log("Server has Started!");
+// });
