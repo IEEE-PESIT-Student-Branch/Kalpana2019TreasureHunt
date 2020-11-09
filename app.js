@@ -11,7 +11,7 @@ var Result = require('./models/result');
 var Question = require('./models/question');
 
 // mongoose.connect("mongodb://localhost/surfit");
-mongoose.connect("mongodb://ublqdyebujdh7p79vfhy:wPpmnYe6KeBCc3vvDFWy@bcy51qru6xqbpuv-mongodb.services.clever-cloud.com:27017/bcy51qru6xqbpuv");
+mongoose.connect("");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
@@ -30,9 +30,9 @@ passport.deserializeUser(User.deserializeUser());
 
 // Question.create(
 //     {
-//         qno: 3,
-//         image: 'thank.jpg',
-//         answer: ''
+//         qno: 12,
+//         image: 'WKzSeGug4pCpZqkqLnha.png',
+//         answer: 'snapchat'
 //     },function(err,question){
 //         if(err){
 //             console.log('err');
