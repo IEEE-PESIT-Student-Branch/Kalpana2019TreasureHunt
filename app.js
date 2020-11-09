@@ -11,7 +11,7 @@ var Result = require('./models/result');
 var Question = require('./models/question');
 
 // mongoose.connect("mongodb://localhost/surfit");
-mongoose.connect("");
+mongoose.connect("mongodb+srv://rajath1999:unity1999@cluster0.s4ovx.mongodb.net/<dbname>?retryWrites=true&w=majority");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
