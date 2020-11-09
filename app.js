@@ -11,7 +11,7 @@ var Result = require('./models/result');
 var Question = require('./models/question');
 
 // mongoose.connect("mongodb://localhost/surfit");
-mongoose.connect("mongodb+srv://rajath1999:unity1999@cluster0.s4ovx.mongodb.net/<dbname>?retryWrites=true&w=majority");
+mongoose.connect("");
 app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("assets"));
@@ -53,14 +53,15 @@ app.get('/',function(req,res){
 });
 
 app.get('/register',function(req,res){
-    res.render("register");
+    res.redirect("/");
+    // res.render("register");
 });
 
 app.post('/register',function(req,res){
-    console.log(req.body.name);
-    console.log(req.body.email);
-    console.log(req.body.username);
-    console.log(req.body.college);
+    // console.log(req.body.name);
+    // console.log(req.body.email);
+    // console.log(req.body.username);
+    // console.log(req.body.college);
     // name: req.body.name, 
     // , username: req.body.username, college: req.body.college
     User.register(new User({name: req.body.name, username: req.body.username, qno: 0,start: new Date(), end: new Date(0,0,0,0,0,0,0), college: req.body.college, email: req.body.email}),req.body.password,function(err,user){
@@ -75,7 +76,8 @@ app.post('/register',function(req,res){
 });
 
 app.get('/login',function(req,res){
-    res.render('login');
+    res.redirect('/');
+    // res.render('login');
 });
 
 // (err, user, info) => {
@@ -87,7 +89,7 @@ app.post('/login',passport.authenticate('local',{
     successRedirect: "/home",
     failureRedirect: "/login"
 }),function(req,res){
-    console.log("POSTED");
+    // console.log("POSTED");
     // res.redirect('/login');
     //answer();
     //let result = new Result({
@@ -110,14 +112,15 @@ app.get('/home',isLoggedIn,function(req,res){
 
 app.post('/home',function(req,res){
     var given = req.body.answer;
+    console.log(req.user.username+" --> "+req.body.answer.toLowerCase());
     if(req.user.qno==0){
         User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),start: new Date(),submit: new Date()},function(err,updatedUser){
-            console.log("Zeroth Question");
+            // console.log("Zeroth Question");
             if(err){
                 console.log(err);
             }
             else{
-                console.log(updatedUser);
+                // console.log(updatedUser);
                 res.redirect('/home');
             }
         });
@@ -130,7 +133,7 @@ app.post('/home',function(req,res){
         else{
             // console.log(rquestion[0].answer == given.toLowerCase());
             if(rquestion[0].answer == given.toLowerCase()){
-                console.log(req.user.qno);
+                // console.log(req.user.qno);
                 if(req.user.qno<12){
                 // User.updateOne({_id: req.user._id},{qno: req.user.qno+1});
                     User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1),submit:new Date()},function(err,updatedUser){
@@ -143,7 +146,7 @@ app.post('/home',function(req,res){
                     });
                 }
                 else{
-                    console.log("Done!");
+                    // console.log("Done!");
                     User.findByIdAndUpdate(req.user._id,{qno: (req.user.qno + 1), end: new Date()},function(err,updatedUser){
                         if(err){
                             console.log(err);
@@ -234,7 +237,7 @@ app.get('/leader',isLoggedIn,function(req,res){
                     }
                 }
             }
-            console.log(all[0].qno);
+            // console.log(all[0].qno);
             res.render("leader",{ppl: all});
         }
     });
