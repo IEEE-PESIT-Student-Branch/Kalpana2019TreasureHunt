@@ -90,7 +90,7 @@
                           <th>UserName</th>
                           <th>College</th>
                           <th>Level</th>
-                          <th>Time</th>
+                          <!-- <th>Time</th> -->
 
                       </tr>
                     </thead>
@@ -99,11 +99,21 @@
 <% var i=1; %>
                       <% ppl.forEach(function(user){ %>
                         <tr>
-                            <td ><%= i++ %></td>
+                            <td ><%= i++ %>
+                              <% if(user.qno>12){ %>
+                              <span>&#127942;</span>
+                              <% } %>
+                            </td>
                             <td><%= user.username %></td>
                             <td><%= user.college %></td>
-                            <td><%= user.qno %></td>
-                            <% var sec = user.start.getSeconds(); %>
+                            <td>
+                              <% if(user.qno>12){ %>
+                                12
+                              <%} else { %>
+                              <%= user.qno %>
+                              <% } %>
+                            </td>
+                            <!-- <% var sec = user.start.getSeconds(); %>
                             <% if(sec<10){ %>
                             <% sec = "0"+sec; %>
                             <% } %>
@@ -111,7 +121,7 @@
                             <% if(min<10){ %>
                             <% min = "0"+min; %>
                             <% } %>
-                            <td><%= ""+user.start.getHours()+":"+min+":"+sec %></td>
+                            <td><%= ""+user.start.getHours()+":"+min+":"+sec %></td> -->
                           </tr>
                       <% }); %>
                             <!-- <tr>

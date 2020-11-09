@@ -76,7 +76,9 @@
     <% if(question.qno>0){ %>
                         <div id="rules" >
         <br>
+        <% if(question.qno<13){ %>
         <button class="btn-small waves-effect waves-green">Level <%= question.qno %></button>
+        <% } %>
         <div class="" id="an">
                 <img  class="responsive-img" src="<%= question.image %>" alt="noimage">
         <!-- <p class="white-text"> Treasure hunt has Ended ! thanks for participating.</p> -->

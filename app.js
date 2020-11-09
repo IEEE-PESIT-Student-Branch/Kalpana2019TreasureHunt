@@ -30,9 +30,9 @@ passport.deserializeUser(User.deserializeUser());
 
 // Question.create(
 //     {
-//         qno: 12,
-//         image: 'WKzSeGug4pCpZqkqLnha.png',
-//         answer: 'snapchat'
+//         qno: 13,
+//         image: 'thank.jpg',
+//         answer: ''
 //     },function(err,question){
 //         if(err){
 //             console.log('err');
